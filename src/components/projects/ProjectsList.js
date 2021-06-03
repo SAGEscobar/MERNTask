@@ -13,7 +13,7 @@ const ProjectsList = () => {
     }, 2000)
   }, [])
 
-  if (projects.length === 0) return null
+  if (projects.length === 0) return <p>Aun no tienes proyectos</p>
 
   return (
     <ul className="listado-proyectos">

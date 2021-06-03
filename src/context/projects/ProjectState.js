@@ -1,6 +1,13 @@
 import React, { useReducer } from 'react'
 import uuid from 'uuid'
-import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT, FORM_VALIDATION, CURRENT_PROJECT } from '../../types'
+import {
+  PROJECT_FORM,
+  GET_PROJECTS,
+  ADD_PROJECT,
+  FORM_VALIDATION,
+  CURRENT_PROJECT,
+  REMOVE_PROJECT
+} from '../../types'
 import projectContext from './projectContext'
 import projectReducer from './projectReducer'
 
@@ -57,6 +64,13 @@ const ProjectState = props => {
     })
   }
 
+  const removeProject = projectId => {
+    dispatch({
+      type: REMOVE_PROJECT,
+      payload: projectId
+    })
+  }
+
   return (
     <projectContext.Provider value={{
       projects: state.projects,
@@ -67,7 +81,8 @@ const ProjectState = props => {
       getProjects,
       addProject,
       showFormError,
-      currentProject
+      currentProject,
+      removeProject
     }}>
       {props.children}
     </projectContext.Provider>
